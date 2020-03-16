@@ -5,6 +5,9 @@
     width: 50%;
     height: 50vh;
 }
+.total-deaths .amount {
+    color: red;
+}
 .total-deaths > .amount {
     font-size: 40px;
     line-height: 3rem;
@@ -22,5 +25,8 @@
 }
 .total-deaths .total-death-list .death-element:hover {
     cursor: pointer;
-    background-color: #5C5C5C;
+    background-color: #ffc0c0;
+}
+.total-deaths .total-death-list .death-element .amount {
+    color: red;
 }

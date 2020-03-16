@@ -23,7 +23,7 @@
 }
 .total-recovered .total-recovered-list .recovered-element:hover {
     cursor: pointer;
-    background-color: #5C5C5C;
+    background-color: #dbfbd7;
 }
 
 .total-recovered .total-recovered-list .recovered-element .amount{

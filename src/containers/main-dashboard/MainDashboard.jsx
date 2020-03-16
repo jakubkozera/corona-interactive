@@ -4,6 +4,7 @@ import ConfirmedCases from './confirmed-cases/ConfirmedCases';
 import MainMap from './map/MainMap';
 import TotalDeaths from './total-deaths/TotalDeaths';
 import TotalRecovered from './total-recovered/TotalRecovered';
+import MainChart from './main-chart/MainChart';
 
 export default function MainDashboard() {
 
@@ -21,9 +22,8 @@ export default function MainDashboard() {
                     <TotalDeaths />
                     <TotalRecovered />
                 </div>
-                <div className="main-graph block">
-                {/* <TotalDeaths /> */}
-
+                <div className="main-chart block">
+                    <MainChart />
                 </div>
             </div>
         </div>

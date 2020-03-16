@@ -8,7 +8,7 @@ export default function MainMap(){
 
     return (
         <div className="map-container">
-            <Map style={{ width: '100%', height: '77vh' }} center={position} zoom={4}>
+            <Map style={{ width: '100%', height: '94.6vh' }} center={position} zoom={4}>
                 <TileLayer
                    
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

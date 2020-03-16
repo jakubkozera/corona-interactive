@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-export default function computeDailyRepory(data) {
+export default function computeDailyReport(data) {
 
     let countryCases = [];
     let dailyConfirmed = 0;
@@ -31,8 +31,6 @@ export default function computeDailyRepory(data) {
         }
     }
     countryCases = _.orderBy(countryCases, "confirmed", "desc")
-    console.log(countryCases);
-
 
     return {
         dailyConfirmed,
