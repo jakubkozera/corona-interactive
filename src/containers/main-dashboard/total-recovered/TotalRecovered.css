@@ -1,0 +1,32 @@
+.total-recovered {
+    /* background-color: antiquewhite; */
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50%;
+    height: 50vh;
+
+}
+.total-recovered > .amount {
+    color: #70A801;
+    font-size: 40px;
+    line-height: 3rem;
+}
+.total-recovered .total-recovered-list {
+    max-height: calc(100% - 80px);
+    overflow: auto;
+    /* min-height: 40vh; */
+}
+.total-recovered .total-recovered-list .recovered-element {
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid #5C5C5C;
+}
+.total-recovered .total-recovered-list .recovered-element:hover {
+    cursor: pointer;
+    background-color: #5C5C5C;
+}
+
+.total-recovered .total-recovered-list .recovered-element .amount{
+    color: #70A801;
+
+}

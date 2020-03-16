@@ -1,0 +1,19 @@
+.total-confirmed {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.total-confirmed .amount {
+    color: rgb(230, 0, 0);
+    stroke-width: 2;
+    font-size: 60px;
+    line-height: normal;
+}
+.total-confirmed .label {
+    color: rgb(255, 255, 255);
+    stroke-width: 2;
+    font-size: 40px;
+    line-height: normal;
+}

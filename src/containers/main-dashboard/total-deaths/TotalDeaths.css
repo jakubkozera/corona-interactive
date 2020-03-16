@@ -1,0 +1,26 @@
+.total-deaths {
+    /* background-color: antiquewhite; */
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50%;
+    height: 50vh;
+}
+.total-deaths > .amount {
+    font-size: 40px;
+    line-height: 3rem;
+}
+.total-deaths .total-death-list {
+    max-height: calc(100% - 80px);
+    overflow: auto;
+    /* min-height: 40vh; */
+}
+
+.total-deaths .total-death-list .death-element {
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid #5C5C5C;
+}
+.total-deaths .total-death-list .death-element:hover {
+    cursor: pointer;
+    background-color: #5C5C5C;
+}

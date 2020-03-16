@@ -5,7 +5,10 @@ import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import 'semantic-ui-css/semantic.min.css'
 
+var _ = require('lodash');
+console.log(_)
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -17,3 +20,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

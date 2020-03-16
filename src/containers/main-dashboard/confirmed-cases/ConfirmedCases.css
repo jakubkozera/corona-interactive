@@ -1,0 +1,10 @@
+.confirmed-cases {
+    text-align: center;
+    color:rgb(189, 189, 189);
+    max-height: 80vh;
+}
+
+.confirmed-cases .list {
+    max-height: 60vh;
+    overflow: auto;
+}

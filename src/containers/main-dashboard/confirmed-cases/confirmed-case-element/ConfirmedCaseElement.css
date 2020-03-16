@@ -1,0 +1,20 @@
+.confirmed-case {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    height: 30px;
+    padding: 5px;
+    border-bottom: 1px solid #5C5C5C;
+}
+.confirmed-case:hover {
+    background-color: #5C5C5C;
+    cursor: pointer;
+}
+.confirmed-case .amount {
+    color: red;
+    margin-left: 5px;
+}
+.confirmed-case .label {
+    margin-left: 5px;
+
+}

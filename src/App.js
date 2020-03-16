@@ -1,56 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './App.css';
+import MainDashboard from './containers/main-dashboard/MainDashboard';
+import computeDailyReport from './utils/dailyReport'
+import { csv } from 'd3'
+import { confirmed, deaths, recovered, countryCases } from './app/redux/reducers/Total'
+
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    csv('data/daily_reports/03-13-2020.csv')
+      .then(recentReport => {
+        console.log("report")
+        const {
+          dailyConfirmed,
+          dailyDeaths,
+          dailyRecovered,
+          dailyCountryCases
+        } = computeDailyReport(recentReport);
+
+        dispatch(confirmed(dailyConfirmed));
+        dispatch(deaths(dailyDeaths));
+        dispatch(recovered(dailyRecovered));
+        dispatch(countryCases(dailyCountryCases));
+
+      })
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <MainDashboard />
     </div>
   );
 }
