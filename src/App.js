@@ -9,9 +9,11 @@ import {computeTimeSeriesReport, computeDeathsTimeSeriesReport, computeRecovered
 import { csv } from 'd3'
 import { confirmed, deaths, recovered, countryCases } from './app/redux/reducers/Total'
 import { chinaConfirmed, otherLocationConfirmed, dataLoaded, deathsConfirmed, recoveredConfirmed } from './app/redux/reducers/Daily'
+import {  Router, Route } from 'react-router-dom'
+import CountryDashboard from './containers/country-view/CountryDashboard';
 
 
-function App() {
+function App({history}) {
 
   const dispatch = useDispatch();
 
@@ -24,9 +26,6 @@ function App() {
           dailyRecovered,
           dailyCountryCases
         } = computeDailyReport(recentReport);
-
-        const { casesPerCountry } = computePerCountryReport(recentReport);
-
 
         dispatch(confirmed(dailyConfirmed));
         dispatch(deaths(dailyDeaths));
@@ -72,7 +71,12 @@ function App() {
 
   return (
     <div className="App">
-      <MainDashboard />
+      <Router history={history}>
+        <Route exact path="/" component={MainDashboard} />
+        <Route exact path="/country" component={CountryDashboard} />
+      </Router>
+      
+      {/* <MainDashboard /> */}
     </div>
   );
 }

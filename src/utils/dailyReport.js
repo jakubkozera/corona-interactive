@@ -1,5 +1,5 @@
-var _ = require('lodash');
-
+import stringToRoute from './stringToRoute'
+import _ from 'lodash'
 export default function computeDailyReport(data) {
 
     let countryCases = [];
@@ -27,6 +27,7 @@ export default function computeDailyReport(data) {
         if(state) {
             countryState = {
                 name: state,
+                nameRoute: stringToRoute(state),
                 long: long,
                 lat: lat,
                 confirmed: currentConfirmed,
@@ -48,6 +49,7 @@ export default function computeDailyReport(data) {
             let newCountryCase = {
                 states: [],
                 country: country,
+                countryRoute: stringToRoute(country),
                 confirmed: currentConfirmed,
                 deaths: currentDeaths,
                 recovered: currentRecovered
