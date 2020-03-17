@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import MainDashboard from './containers/main-dashboard/MainDashboard';
 import computeDailyReport from './utils/dailyReport'
+import computePerCountryReport from './utils/perCountryReport'
 import {computeTimeSeriesReport, computeDeathsTimeSeriesReport, computeRecoveredTimeSeriesReport} from './utils/timeSeriesReport'
 import { csv } from 'd3'
 import { confirmed, deaths, recovered, countryCases } from './app/redux/reducers/Total'
@@ -23,6 +24,9 @@ function App() {
           dailyRecovered,
           dailyCountryCases
         } = computeDailyReport(recentReport);
+
+        const { casesPerCountry } = computePerCountryReport(recentReport);
+
 
         dispatch(confirmed(dailyConfirmed));
         dispatch(deaths(dailyDeaths));

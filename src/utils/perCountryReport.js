@@ -1,6 +1,12 @@
 var _ = require('lodash');
 
-export default function computeDailyReport(data) {
+
+export default function computePerCountryReport(data) {
+
+    console.log('computePerCountryReport data');
+    console.log(data);
+    let casesPerCountry = [];
+
 
     let countryCases = [];
     let dailyConfirmed = 0;
@@ -50,27 +56,24 @@ export default function computeDailyReport(data) {
                 country: country,
                 confirmed: currentConfirmed,
                 deaths: currentDeaths,
-                recovered: currentRecovered
+                recovered: currentRecovered,
+                lat,
+                long 
             }
 
             if(state) {
-
-
                 newCountryCase.states.push(countryState);
-            } else {
-                newCountryCase.lat = lat;
-                newCountryCase.long = long;
-            }
+            } 
 
             countryCases.push(newCountryCase);
         }
     }
     countryCases = _.orderBy(countryCases, "confirmed", "desc")
 
+    console.log("per country countryCases")
+    console.log(countryCases)
+
     return {
-        dailyConfirmed,
-        dailyDeaths,
-        dailyRecovered,
-        dailyCountryCases: countryCases
+        casesPerCountry
       }
 }

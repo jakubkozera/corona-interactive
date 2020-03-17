@@ -1,0 +1,25 @@
+.map-popup {
+    padding: 5px;
+    font-weight: bold;
+    border: 1px dashed #eee;
+}
+.map-popup:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+.map-popup span {
+    margin:3px;
+}
+.map-popup .confirmed {
+
+    color: orange;
+}
+
+.map-popup .recovered {
+    color:#48A02C
+}
+
+.map-popup .deaths {
+    color: red;
+
+}

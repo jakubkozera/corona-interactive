@@ -14,16 +14,11 @@ export default function MainChart() {
     const recoveredConfrimedDailyCases = useSelector(selectRecoveredConfirmed)
     const chartReady = useSelector(selectAllDataLoaded) 
 
-
     let data = [];
-
     if(chartReady) {
-      console.log('chart data')
-      debugger;
       data = getDataForChart(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
-      console.log(data)
-
     }
+
     return ( chartReady && <MyResponsiveLine data={data} /> )
 }
 
@@ -88,7 +83,6 @@ const MyResponsiveLine = ({ data }) => (
 )
 
 function getDataForChart(china, other, deaths, recovered) {
-  debugger;
   let data = [{
     id: "China [Confirmed]",
     data: dataObjectToArray(china)
