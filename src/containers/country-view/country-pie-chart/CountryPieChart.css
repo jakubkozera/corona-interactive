@@ -1,0 +1,40 @@
+.country-pie-chart {
+    width: 32%;
+    height: 32vh;
+}
+.country-pie-chart .label {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 5px;
+}
+
+.country-pie-chart .chart {
+    height: 30vh;
+    width: 50%;
+}
+.country-pie-chart .chart-container {
+    display: flex;
+    flex-direction: row;
+}
+.country-pie-chart .chart-container  .country-info {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.1rem;
+}
+.country-pie-chart .chart-container  .country-info .tag {
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 15px;
+}
+.country-pie-chart .chart-container  .country-info .tag:hover {
+    cursor: text;
+}
+.country-pie-chart .chart-container  .country-info .recovery-ratio {
+    background-color: #81d46ec7;
+}
+.country-pie-chart .chart-container  .country-info .death-ratio {
+    background-color: #ef7368;
+}

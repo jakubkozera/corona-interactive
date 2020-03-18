@@ -30,4 +30,6 @@ export const selectConfirmed = state => state.total.confirmed;
 export const selectDeaths = state => state.total.deaths;
 export const selectRecovered = state => state.total.recovered;
 export const selectCountryCases = state => state.total.countryCases;
+export const selectCountrySpecificCases = countryRoute => state => state.total.countryCases.filter(c => c.countryRoute === countryRoute)[0];
+
 export default slice.reducer;

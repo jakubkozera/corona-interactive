@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import MainDashboard from './containers/main-dashboard/MainDashboard';
 import computeDailyReport from './utils/dailyReport'
-import computePerCountryReport from './utils/perCountryReport'
 import {computeTimeSeriesReport, computeDeathsTimeSeriesReport, computeRecoveredTimeSeriesReport} from './utils/timeSeriesReport'
 import { csv } from 'd3'
 import { confirmed, deaths, recovered, countryCases } from './app/redux/reducers/Total'
@@ -16,9 +15,11 @@ import CountryDashboard from './containers/country-view/CountryDashboard';
 function App({history}) {
 
   const dispatch = useDispatch();
+  const rootFolderLocation = window.location.pathname.length > 1 ? "../" : ""
 
+  console.log('app')
   useEffect(() => {
-    csv('data/daily_reports/03-13-2020.csv')
+    csv(rootFolderLocation + 'data/daily_reports/03-13-2020.csv')
       .then(recentReport => {
         const {
           dailyConfirmed,
@@ -35,7 +36,7 @@ function App({history}) {
       })
 
 
-      csv('data/time_series/time_series_19-covid-Deaths.csv')
+      csv(rootFolderLocation + 'data/time_series/time_series_19-covid-Deaths.csv')
       .then(deathsSeries => {
         const { deathsResult } = computeDeathsTimeSeriesReport(deathsSeries);
 
@@ -43,14 +44,14 @@ function App({history}) {
 
       })
 
-      csv('data/time_series/time_series_19-covid-Recovered.csv')
+      csv(rootFolderLocation + 'data/time_series/time_series_19-covid-Recovered.csv')
       .then(timeSeries => {
         const { recoveredResult } = computeRecoveredTimeSeriesReport(timeSeries);
 
        dispatch(recoveredConfirmed(recoveredResult))
       })
 
-      csv('data/time_series/time_series_19-covid-Confirmed.csv')
+      csv(rootFolderLocation + 'data/time_series/time_series_19-covid-Confirmed.csv')
         .then(deathsSeries => {
           const {
             chinaResult,
@@ -73,7 +74,7 @@ function App({history}) {
     <div className="App">
       <Router history={history}>
         <Route exact path="/" component={MainDashboard} />
-        <Route exact path="/country" component={CountryDashboard} />
+        <Route exact path="/country/:country" component={CountryDashboard} />
       </Router>
       
       {/* <MainDashboard /> */}
