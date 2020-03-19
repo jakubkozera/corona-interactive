@@ -3,8 +3,6 @@ var _ = require('lodash');
 
 export default function computePerCountryReport(data) {
 
-    console.log('computePerCountryReport data');
-    console.log(data);
     let casesPerCountry = [];
 
 
@@ -70,8 +68,6 @@ export default function computePerCountryReport(data) {
     }
     countryCases = _.orderBy(countryCases, "confirmed", "desc")
 
-    console.log("per country countryCases")
-    console.log(countryCases)
 
     return {
         casesPerCountry

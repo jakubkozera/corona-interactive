@@ -6,20 +6,21 @@ import { selectChinaConfirmed, selectOtherLocationConfirmed, selectDeathsConfirm
 import { ResponsiveLine } from '@nivo/line'
 
 
-export default function MainChart() {
+export default function MainChartContainer() {
+  const chartReady = useSelector(selectAllDataLoaded) 
+  return (chartReady && <MainChart/>)
+
+}
+
+function MainChart() {
 
     const chinaConfrimedDailyCases = useSelector(selectChinaConfirmed)
     const otherLocationConfrimedDailyCases = useSelector(selectOtherLocationConfirmed)
     const deathsConfrimedDailyCases = useSelector(selectDeathsConfirmed)
     const recoveredConfrimedDailyCases = useSelector(selectRecoveredConfirmed)
-    const chartReady = useSelector(selectAllDataLoaded) 
 
-    let data = [];
-    if(chartReady) {
-      data = getDataForChart(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
-    }
-
-    return ( chartReady && <MyResponsiveLine data={data} /> )
+    let data = getDataForChart(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
+    return ( <MyResponsiveLine data={data} /> )
 }
 
 const MyResponsiveLine = ({ data }) => (

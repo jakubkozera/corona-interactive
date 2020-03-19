@@ -1,0 +1,6 @@
+.country-articles{
+    width: 32%;
+    height: 96vh;
+    overflow: auto;
+    text-align: left;
+}

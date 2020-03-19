@@ -2,6 +2,7 @@
   "name": "corona-interactive",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://news.google.com/search",
   "dependencies": {
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",

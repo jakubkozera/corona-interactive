@@ -9,7 +9,6 @@ export default function TotalRecovered() {
     const countryCases = useSelector(selectCountryCases)
     const recoveredCountryCases = _.orderBy(countryCases, 'recovered', 'desc').filter(cc => cc.recovered > 0).map(cc => ({ country: cc.country, recovered: cc.recovered, countryRoute: cc.countryRoute  }))
     const recovered = useSelector(selectRecovered)
-    console.log(recoveredCountryCases)
 
     return (
         <div className="total-recovered block">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Map, Marker, Popup, TileLayer, Circle, CircleMarker, } from 'react-leaflet'
+import { Map, Popup, TileLayer, CircleMarker, } from 'react-leaflet'
 import './MainMap.css'
 import { selectCountryCases } from '../../../app/redux/reducers/Total'
 import 'leaflet/dist/leaflet.css';
@@ -14,8 +14,6 @@ export default function MainMap() {
     }
     const countryData = useSelector(selectCountryCases)
     const markers = getMarkers(countryData, zoomLevel)
-    console.log('markers')
-    console.log(markers)
     return (
         <div className="map-container">
             <Map
