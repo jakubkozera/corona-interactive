@@ -6,6 +6,7 @@ import './CountryDashboard.css'
 import CountryPieChart from './country-pie-chart/CountryPieChart';
 import CountryGraph from './country-graph/CountryGraph';
 import CountryArticles from './country-articles/CountryArticles'
+import CountryGrid from './country-grid/CountryGrid'
 export default function CountryDashboard({ match }) {
 
     const dispatch = useDispatch();
@@ -32,12 +33,9 @@ export default function CountryDashboard({ match }) {
                 <div className="country-dashboard-content">
                     <CountryPieChart country={country} />
                     <CountryGraph country={country} />
-                    <div className="block pile" style={{ width: '98%', height: '62vh'}}>test</div>
+                    <CountryGrid country={country} />
                 </div>
-   
-
             </div>
-
         </>
     )
 }

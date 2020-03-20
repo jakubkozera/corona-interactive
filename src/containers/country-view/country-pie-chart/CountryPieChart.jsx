@@ -26,11 +26,11 @@ export default function CountryPieChart({ country }) {
                     </div>
                     <div className="country-info">
                         <div className="recovery-ratio tag block">
-                            Recovery ratio: {(countryData.recovered / countryData.confirmed).toFixed(3)} %
+                            Recovery ratio: {(countryData.recovered / countryData.confirmed).toFixed(4)} %
                         </div>
                         <br /><br />
                         <div className="death-ratio tag block">
-                            Death ratio: {(countryData.deaths / countryData.confirmed).toFixed(3)} %
+                            Death ratio: {(countryData.deaths / countryData.confirmed).toFixed(4)} %
                         </div>
 
                     </div>
