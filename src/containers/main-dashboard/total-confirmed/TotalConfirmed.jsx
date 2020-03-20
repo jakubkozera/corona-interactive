@@ -5,9 +5,9 @@ import { selectConfirmed } from '../../../app/redux/reducers/Total'
 export default function TotalConfirmed() {
     const totalConfirmed = useSelector(selectConfirmed);
     return (
-        <div class="total-confirmed">
-            <div class="label">Total Confirmed</div>
-            <div class="amount">{totalConfirmed}</div>
+        <div className="total-confirmed">
+            <div className="label">Total Confirmed</div>
+            <div className="amount">{totalConfirmed}</div>
         </div>
     )
 }

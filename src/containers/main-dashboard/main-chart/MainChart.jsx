@@ -103,8 +103,6 @@ return data;
 
 // moment('21/2/20', 'DD-MM-YY').format('YYYY-MM-DD')
 function dataObjectToArray(data) {
-  console.log('dataObjectToArray data')
-  console.log(data)
   var result = [];
   var dataProps = Object.getOwnPropertyNames(data);
 

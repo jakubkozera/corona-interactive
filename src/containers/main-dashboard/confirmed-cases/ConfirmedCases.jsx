@@ -8,9 +8,9 @@ export default function ConfirmedCases() {
 
     const data = useSelector(selectCountryCases);
     return (
-        <div class="confirmed-cases">
-            <div class="label">Confirmed Cases by <br />Country/Region/Sovereignty</div>
-            <div class="list">
+        <div className="confirmed-cases">
+            <div className="label">Confirmed Cases by <br />Country/Region/Sovereignty</div>
+            <div className="list">
                 {data.map((value, index) => {
                     return <ConfirmedCaseElement key={index} confirmedCase={value}/>
                 })}
