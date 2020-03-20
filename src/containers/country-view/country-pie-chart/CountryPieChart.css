@@ -26,7 +26,6 @@
     width: 100%;
     color: white;
     font-weight: bold;
-    border-radius: 50%;
     padding: 15px;
 }
 .country-pie-chart .chart-container  .country-info .tag:hover {
