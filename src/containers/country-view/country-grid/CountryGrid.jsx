@@ -22,8 +22,6 @@ function CountryGrid({ country }) {
     };
 
     const countryDetailedDailyReport = useSelector(selectCountryDetailedDailyReport(country))
-    console.log('countryDetailedDailyReport')
-    console.log(countryDetailedDailyReport)
 
     const columnDefs = [
         { headerName: "Date", field: "date", sort: 'desc' },

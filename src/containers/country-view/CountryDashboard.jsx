@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectCountrySpecificCases } from '../../app/redux/reducers/Total'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { addCountryArticles } from '../../app/redux/reducers/CountryArticle'
 import './CountryDashboard.css'
 import CountryPieChart from './country-pie-chart/CountryPieChart';
@@ -24,7 +23,7 @@ export default function CountryDashboard({ match }) {
                 dispatch(addCountryArticles({ country, articles: JSON.parse(articles.split("&#39;").join("")) }))
             })
             .catch(error => console.log('error', error));
-    }, [])
+    }, [country, dispatch])
 
     return (
         <>

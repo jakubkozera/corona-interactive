@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
 import './App.css';
 import MainDashboard from './containers/main-dashboard/MainDashboard';
 import computeDailyReport from './utils/dailyReport'

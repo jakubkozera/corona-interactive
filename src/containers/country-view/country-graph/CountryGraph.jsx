@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import './CountryGraph.css'
 import moment from 'moment'
@@ -21,7 +21,7 @@ function CountryGraph({ country }) {
     const countryDailyReport = useSelector(selectCountryDailyReport(country))
 
 
-    const [data, setData] = useState(getGraphData(countryDailyReport))
+    const [data] = useState(getGraphData(countryDailyReport))
     const [visibleGraphData, setVisibleGraphData] = useState(data)
     const [activeButton, setActiveButton] = useState('all')
 

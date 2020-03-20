@@ -4,6 +4,27 @@
     color: black;
     max-height: 80vh;
 }
+.confirmed-cases .search {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.confirmed-cases .search.ui.icon.input input {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(238, 238, 238, 0.5);
+    color: black;
+}
+.confirmed-cases .search.ui.icon.input input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+.confirmed-cases .search.ui.icon.input input::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+.confirmed-cases .search.ui.icon.input input::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
 
 .confirmed-cases .list {
     max-height: calc(95vh - 197px);;
