@@ -8,7 +8,7 @@ export default function TotalDeaths() {
 
     const countryCases = useSelector(selectCountryCases)
     const deaths = useSelector(selectDeaths)
-    const deathsCountryCases = _.orderBy(countryCases, 'deaths', 'desc').filter(cc => cc.deaths > 0).map(cc => ({ country: cc.country, deaths: cc.deaths }))
+    const deathsCountryCases = _.orderBy(countryCases, 'deaths', 'desc').filter(cc => cc.deaths > 0).map(cc => ({ country: cc.country, deaths: cc.deaths, countryRoute: cc.countryRoute }))
 
     return (
         <div className="total-deaths block">

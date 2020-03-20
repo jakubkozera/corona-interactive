@@ -26,7 +26,7 @@ export default function CountryDashboard({ match }) {
     }, [])
 
     return (
-    <div class="country-dashboard">
+    <div className="country-dashboard">
         <CountryArticles country={country} />
         <CountryPieChart country={country} />
         <CountryGraph country={country}/>

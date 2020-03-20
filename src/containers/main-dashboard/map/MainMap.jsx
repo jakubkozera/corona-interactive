@@ -39,9 +39,9 @@ function getMarkers(data, zoomLevel) {
         if (d.states.length === 0) {
             markers.push(
                 (<CircleMarker center={[d.lat, d.long]} color="orange" radius={calculateRadious(d.confirmed, zoomLevel)}>
-                    {/* <Popup>{d.country}</Popup> */}
                     <MapPopup 
                         country={d.country}
+                        countryRoute={d.countryRoute}
                         confirmed={d.confirmed}
                         recovered={d.recovered}
                         deaths={d.deaths}

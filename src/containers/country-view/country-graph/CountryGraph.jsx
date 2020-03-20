@@ -107,7 +107,6 @@ const MyResponsiveLine = ({ data, period }) => (
         margin={{ top: 30, right: 20, bottom: 50, left: 40 }}
         xScale={{ type: 'time', format: '%Y-%m-%d', precision: 'day', }}
         xFormat="time:%Y-%m-%d"
-        yScale={{ type: 'linear', min: '0', max: 'auto', stacked: false, reverse: false }}
         axisTop={null}
         axisRight={null}
         sliceTooltip={renderToolTip}
