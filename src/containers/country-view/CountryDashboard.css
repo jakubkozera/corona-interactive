@@ -1,4 +1,11 @@
 .country-dashboard {
     display: flex;
     overflow: hidden;
+    width: 100%;
+
+}
+.country-dashboard .country-dashboard-content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 65%;
 }

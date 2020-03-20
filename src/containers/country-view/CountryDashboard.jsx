@@ -15,21 +15,29 @@ export default function CountryDashboard({ match }) {
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
-          };
-          
-          fetch("https://covid-19-news.azurewebsites.net/api/Function1?country=" + country, requestOptions)
+        };
+
+        fetch("https://covid-19-news.azurewebsites.net/api/Function1?country=" + country, requestOptions)
             .then(response => response.text())
             .then(articles => {
-                dispatch(addCountryArticles({country, articles: JSON.parse(articles.split("&#39;").join(""))}))
+                dispatch(addCountryArticles({ country, articles: JSON.parse(articles.split("&#39;").join("")) }))
             })
             .catch(error => console.log('error', error));
     }, [])
 
     return (
-    <div className="country-dashboard">
-        <CountryArticles country={country} />
-        <CountryPieChart country={country} />
-        <CountryGraph country={country}/>
-    </div>
+        <>
+            <div className="country-dashboard">
+                <CountryArticles country={country} />
+                <div className="country-dashboard-content">
+                    <CountryPieChart country={country} />
+                    <CountryGraph country={country} />
+                    <div className="block pile" style={{ width: '98%', height: '62vh'}}>test</div>
+                </div>
+   
+
+            </div>
+
+        </>
     )
 }
