@@ -16,3 +16,7 @@
     text-align: left;
     overflow: auto;
 }
+
+.country-articles h2 {
+    font-size: 1.5vw;
+}

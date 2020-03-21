@@ -8,12 +8,14 @@
 .total-confirmed .amount {
     color: orange;
     stroke-width: 2;
-    font-size: 60px;
+    font-size: 3vw;
+    /* font-size: 60px; */
     line-height: normal;
 }
 .total-confirmed .label {
     color: black;
     stroke-width: 2;
-    font-size: 40px;
+    /* font-size: 40px; */
+    font-size: 2vw;
     line-height: normal;
 }
