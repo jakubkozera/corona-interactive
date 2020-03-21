@@ -21,7 +21,7 @@ function App({ history }) {
   const rootFolderLocation = window.location.pathname.length > 1 ? "../" : ""
 
   useEffect(() => {
-    csv(rootFolderLocation + 'data/daily_reports/03-18-2020.csv')
+    csv(rootFolderLocation + 'data/daily_reports/03-20-2020.csv')
       .then(recentReport => {
         const {
           dailyConfirmed,

@@ -5,6 +5,7 @@ import countryNameFromRoute from '../../../utils/countryNameFromRoute'
 import './CountryArticles.css'
 import CountryArticle from './country-article/CountryArticle'
 import { Link } from 'react-router-dom'
+import { Loader } from 'semantic-ui-react'
 
 export default function CountryArticles({ country }) {
 
@@ -27,6 +28,7 @@ export default function CountryArticles({ country }) {
             <hr />
             <div className="country-articles-container">
                 {(countryArticles && countryArticles.map((article, index) => { return <CountryArticle article={article} key={index} /> }))}
+                {(!countryArticles && (<Loader style={{ marginTop: '40px' }} active inline='centered' />))}
             </div>
         </div>
     )
