@@ -15,3 +15,7 @@
 .country-grid .ag-theme-balham .ag-ltr .ag-cell {
     border-right: 1px solid #bbb;
   }
+  .country-grid .ag-theme-balham .ag-header-row.ag-header-row-column {
+      color: black;
+      font-weight: bold;
+  }

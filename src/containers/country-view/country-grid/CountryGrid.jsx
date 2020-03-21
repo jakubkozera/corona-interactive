@@ -24,16 +24,16 @@ function CountryGrid({ country }) {
     const countryDetailedDailyReport = useSelector(selectCountryDetailedDailyReport(country))
 
     const columnDefs = [
-        { headerName: "Date", field: "date", sort: 'desc' },
+        { headerName: "Date", field: "date", sort: 'desc', filter: true },
         { headerName: "Confirmed", field: "confirmed" },
         { headerName: "Active", field: "active" },
         { headerName: "Recovered", field: "recovered" },
         { headerName: "Deaths", field: "deaths" },
-        { headerName: "New Confirmed", field: "newConfirmed" },
-        { headerName: "New Recovered", field: "newRecovered" },
-        { headerName: "New Deaths", field: "newDeaths" },        
-        { headerName: "Recovery ratio", field: "recoveryRatio", sortable: false, filter: false },
-        { headerName: "Death ratio", field: "deathRatio", sortable: false, filter: false },
+        { headerName: "+ Confirmed", field: "newConfirmed" },
+        { headerName: "+ Recovered", field: "newRecovered" },
+        { headerName: "+ Deaths", field: "newDeaths" },        
+        { headerName: "Recovery ratio", field: "recoveryRatio", sortable: false, },
+        { headerName: "Death ratio", field: "deathRatio", sortable: false },
     ]
 
     return (
@@ -42,7 +42,7 @@ function CountryGrid({ country }) {
             <br />
             <div className="ag-theme-balham grid-wrapper">
                 <AgGridReact
-                    defaultColDef={{ resizable: true, sortable: true, sortingOrder: ['desc', 'asc', null], filter: true }}
+                    defaultColDef={{ resizable: true, sortable: true, sortingOrder: ['desc', 'asc', null] }}
                     columnDefs={columnDefs}
                     animateRows={true}
                     rowData={countryDetailedDailyReport}
