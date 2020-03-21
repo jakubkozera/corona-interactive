@@ -27,6 +27,7 @@
 
 
 .confirmed-cases .list {
-    max-height: calc(95vh - 197px);;
+    /* max-height: calc(95vh - 197px);; */
+    height: 71vh;
     overflow: auto;
 }

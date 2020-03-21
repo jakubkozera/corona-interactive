@@ -1,18 +1,33 @@
 .map-popup {
     padding: 5px;
     font-weight: bold;
+    width: max-content;
+    min-width: 160px;
+    height: 90px;
     border: 1px dashed #eee;
 }
 .map-popup:hover {
     cursor: pointer;
     background-color: #eee;
 }
-.map-popup span {
-    margin:3px;
+.map-popup div {
+    padding:1px;
 }
 .map-popup .confirmed {
 
     color: orange;
+}
+.map-popup .amount {
+    float: right;
+    margin-left: 15px;
+}
+.map-popup .country-name {
+    color: black;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.map-popup .label {
+    float: left;
 }
 
 .map-popup .recovered {
