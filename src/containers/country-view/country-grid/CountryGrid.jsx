@@ -39,7 +39,6 @@ function CountryGrid({ country }) {
     return (
         <div className="country-grid" >
             <h3>All collected data</h3>
-            <br />
             <div className="ag-theme-balham grid-wrapper">
                 <AgGridReact
                     defaultColDef={{ resizable: true, sortable: true, sortingOrder: ['desc', 'asc', null] }}

@@ -2,13 +2,16 @@
     width: 32%;
     height: 96vh;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .country-articles hr{
     border-top: 1px solid #eee;
 }
 .country-articles .country-articles-heading {
-    height: 12vh;
-    padding: 20px;
+    height: 10vh;
+    padding: 2vw;
 }
 .country-articles .country-articles-container {
     width: 100%;
@@ -19,4 +22,9 @@
 
 .country-articles h2 {
     font-size: 1.5vw;
+    margin: 0px;
+    padding-bottom: .3vw;
+    padding-top: .3vw;
+    
 }
+
