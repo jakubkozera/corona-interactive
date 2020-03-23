@@ -17,7 +17,7 @@ export default function CountryDashboard({ match }) {
             redirect: 'follow'
         };
 
-        fetch("https://covid-19-news.azurewebsites.net/api/Function1?country=" + country, requestOptions)
+        fetch("https://covidinteractive.azurewebsites.net/api/covidnews?country=" + country, requestOptions)
             .then(response => response.text())
             .then(articles => {
                 dispatch(addCountryArticles({ country, articles: JSON.parse(articles.split("&#39;").join("")) }))
