@@ -17,12 +17,12 @@ export default function computeDailyReport(data) {
         const currentRecovered = parseInt(data[i]["Recovered"]);
         dailyRecovered += currentRecovered;
 
-        const lat = parseFloat(data[i]["Latitude"]);
-        const long = parseFloat(data[i]["Longitude"])
-        const country = data[i]["Country/Region"];
+        const lat = parseFloat(data[i]["Lat"]);
+        const long = parseFloat(data[i]["Long_"])
+        const country = data[i]["Country_Region"];
 
         
-        const state = data[i]["Province/State"]
+        const state = data[i]["Province_State"]
         let countryState;
         if(state) {
             countryState = {
@@ -41,8 +41,19 @@ export default function computeDailyReport(data) {
             countryCase.confirmed += currentConfirmed;
             countryCase.deaths += currentDeaths;
             countryCase.recovered += currentRecovered;
-            if(!!countryCase.states && state) {
-                countryCase.states.push(countryState)
+
+
+            if(state) {
+                debugger;
+                let existingState = countryCase.states.filter(s => s.name === state)[0];
+
+                if(existingState) {
+                    existingState.confirmed += countryState.confirmed;
+                    existingState.deaths += countryState.deaths;
+                    existingState.recovered += countryState.recovered; 
+                } else {
+                    countryCase.states.push(countryState)
+                }
             }
         } else {
 

@@ -21,7 +21,7 @@ function App({ history }) {
   const rootFolderLocation = window.location.pathname.length > 1 ? "../" : ""
 
   useEffect(() => {
-    csv(rootFolderLocation + 'data/daily_reports/03-22-2020.csv')
+    csv(rootFolderLocation + 'data/cases.csv')
       .then(recentReport => {
         const {
           dailyConfirmed,
@@ -39,7 +39,7 @@ function App({ history }) {
       })
 
 
-    csv(rootFolderLocation + 'data/time_series/time_series_19-covid-Deaths.csv')
+    csv(rootFolderLocation + 'data/time_series_covid19_deaths_global.csv')
       .then(deathsSeries => {
         const { deathsResult } = computeDeathsTimeSeriesReport(deathsSeries);
 
@@ -57,7 +57,7 @@ function App({ history }) {
 
       })
 
-    csv(rootFolderLocation + 'data/time_series/time_series_19-covid-Confirmed.csv')
+    csv(rootFolderLocation + 'data/time_series_covid19_confirmed_global.csv')
       .then(deathsSeries => {
         const {
           chinaResult,
