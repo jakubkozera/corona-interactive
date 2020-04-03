@@ -36,10 +36,12 @@ function getMarkers(data, zoomLevel) {
     let uniqueKey = 0;
     for (let i = 0; i < data.length; i++) {
         const d = data[i];
+        const lat = isNaN(d.lat) ? 0 : d.lat;
+        const long = isNaN(d.long) ? 0 : d.long;
         uniqueKey++;
         if (d.states.length === 0) {
             markers.push(
-                (<CircleMarker key={uniqueKey} center={[d.lat, d.long]} color="orange" radius={calculateRadious(d.confirmed, zoomLevel)}>
+                (<CircleMarker key={uniqueKey} center={[lat, long]} color="orange" radius={calculateRadious(d.confirmed, zoomLevel)}>
                     <MapPopup 
                         country={d.country}
                         countryRoute={d.countryRoute}
@@ -53,8 +55,10 @@ function getMarkers(data, zoomLevel) {
             for(let j = 0; j < d.states.length; j++) {
                 uniqueKey++;
                 const state = d.states[j];
+                const lat = isNaN(state.lat) ? 0 : state.lat;
+                const long = isNaN(state.long) ? 0 : state.long;
                 markers.push(
-                    (<CircleMarker key={uniqueKey} center={[state.lat, state.long]} color="orange" radius={calculateRadious(state.confirmed, zoomLevel)}>
+                    (<CircleMarker key={uniqueKey} center={[lat, long]} color="orange" radius={calculateRadious(state.confirmed, zoomLevel)}>
                         <MapPopup 
                             country={`${d.country} [${state.name}]`}
                             countryRoute={d.countryRoute}
