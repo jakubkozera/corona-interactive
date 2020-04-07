@@ -27,6 +27,7 @@ function CountryGraph({ country }) {
     const [visibleChartDataData, setVisibleChartDataData] = useState(barChartData)
     const [visibleGraphData, setVisibleGraphData] = useState(data)
     const [activeButton, setActiveButton] = useState('all')
+    const [activeChart, setActiveChart] = useState('bar')
 
     const onClick = period => {
         setVisibleGraphData(getVisibleData(data, period))
@@ -35,8 +36,24 @@ function CountryGraph({ country }) {
         setActiveButton(period)
     }
 
+    const onChartChange = chart => {
+
+
+        setActiveChart(chart)
+    }
+
     return (
         <>
+            <div className="ui buttons" style={{ float: 'left', paddingLeft: '1vw'}}>
+                <button onClick={() => onChartChange('bar')}
+                    className={"ui button " + (activeChart === 'bar' ? 'active' : '')}>
+                    Daily cases
+                </button>
+                <button onClick={() => onChartChange('chart')}
+                    className={"ui button " + (activeChart === 'chart' ? 'active' : '')} >
+                    Total cases
+                </button>
+            </div>
             <div className="ui buttons">
                 <button onClick={() => onClick('all')}
                     className={"ui button " + (activeButton === 'all' ? 'active' : '')}>
@@ -51,9 +68,11 @@ function CountryGraph({ country }) {
                     Last 30 days
                 </button>
             </div>
+
+
             <div style={{ height: '85%' }}>
-                <CountryBarChart data={visibleChartDataData} />
-                {/* <MyResponsiveLine data={visibleGraphData} period={activeButton} /> */}
+                {activeChart === 'bar' && (<CountryBarChart data={visibleChartDataData} />) }
+                {activeChart === 'chart' && (<MyResponsiveLine data={visibleGraphData} period={activeButton} />)}
             </div>
         </>
     )

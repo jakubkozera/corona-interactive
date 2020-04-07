@@ -13,52 +13,18 @@ const MyResponsiveBar = ({ data }) => (
         data={data}
         keys={[ 'deaths', 'confirmed' ]}
         indexBy="date"
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        margin={{ top: 50, right: 20, bottom: 30, left: 50 }}
         padding={0.3}
         groupMode="grouped"
-        colors={{ scheme: 'nivo' }}
-        defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: '#38bcb2',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
-        fill={[
-            {
-                match: {
-                    id: 'fries'
-                },
-                id: 'dots'
-            },
-            {
-                match: {
-                    id: 'sandwich'
-                },
-                id: 'lines'
-            }
-        ]}
+        colors={{ scheme: 'pastel1' }}
+
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
         axisTop={null}
         axisRight={null}
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
-            legend: 'country',
+            tickRotation: -40,
             legendPosition: 'middle',
             legendOffset: 32
         }}
@@ -66,7 +32,6 @@ const MyResponsiveBar = ({ data }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
             legendPosition: 'middle',
             legendOffset: -40
         }}
@@ -76,11 +41,11 @@ const MyResponsiveBar = ({ data }) => (
         legends={[
             {
                 dataFrom: 'keys',
-                anchor: 'bottom-right',
-                direction: 'column',
+                anchor: 'top-left',
+                direction: 'row',
                 justify: false,
-                translateX: 120,
-                translateY: 0,
+                translateX: 10,
+                translateY: -15,
                 itemsSpacing: 2,
                 itemWidth: 100,
                 itemHeight: 20,
