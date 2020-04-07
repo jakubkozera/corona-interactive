@@ -9,3 +9,9 @@
     flex-wrap: wrap;
     width: 65%;
 }
+
+.country-dashboard .country-left-panel {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+}

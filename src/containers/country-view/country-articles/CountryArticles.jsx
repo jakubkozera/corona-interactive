@@ -17,13 +17,12 @@ export default function CountryArticles({ country }) {
                 <Link to="/" className="back-to-main-view">
                     <button class="ui basic button">
                         <i class="icon arrow left"></i>
-                        Back to main view
+                        Back
                     </button>
                 </Link>
-
-                <h2>
+                <span className="country-articles-header">
                     {countryName} COVID-19 articles:
-                </h2>
+                </span>
             </div>
             <hr />
             <div className="country-articles-container">

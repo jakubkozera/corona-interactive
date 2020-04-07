@@ -1,6 +1,6 @@
 .country-pie-chart {
-    width: 48%;
-    height: 32vh;
+    /* width: 48%; */
+    height: 30vh;
 }
 .country-pie-chart .label {
     font-weight: bold;

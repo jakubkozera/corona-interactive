@@ -28,9 +28,11 @@ export default function CountryDashboard({ match }) {
     return (
         <>
             <div className="country-dashboard">
-                <CountryArticles country={country} />
-                <div className="country-dashboard-content">
+                <div className="country-left-panel">
+                    <CountryArticles country={country} />
                     <CountryPieChart country={country} />
+                </div>
+                <div className="country-dashboard-content">
                     <CountryGraph country={country} />
                     <CountryGrid country={country} />
                 </div>

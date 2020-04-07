@@ -6,6 +6,7 @@ import _ from 'lodash'
 import { selectCountryDailyReport, selectAllDataLoaded } from '../../../app/redux/reducers/Daily'
 import { Loader } from 'semantic-ui-react'
 import { ResponsiveLine } from '@nivo/line'
+import CountryBarChart from './CountryBarChart'
 
 export default function CountryGraphContainer({ country }) {
     const dataLoaded = useSelector(selectAllDataLoaded);
@@ -22,11 +23,15 @@ function CountryGraph({ country }) {
 
 
     const [data] = useState(getGraphData(countryDailyReport))
+    const [barChartData] = useState(getBarChartData(countryDailyReport))
+    const [visibleChartDataData, setVisibleChartDataData] = useState(barChartData)
     const [visibleGraphData, setVisibleGraphData] = useState(data)
     const [activeButton, setActiveButton] = useState('all')
 
     const onClick = period => {
         setVisibleGraphData(getVisibleData(data, period))
+        setVisibleChartDataData(getVisibleBarChartData(barChartData, period))
+
         setActiveButton(period)
     }
 
@@ -47,7 +52,8 @@ function CountryGraph({ country }) {
                 </button>
             </div>
             <div style={{ height: '85%' }}>
-                <MyResponsiveLine data={visibleGraphData} period={activeButton} />
+                <CountryBarChart data={visibleChartDataData} />
+                {/* <MyResponsiveLine data={visibleGraphData} period={activeButton} /> */}
             </div>
         </>
     )
@@ -65,6 +71,38 @@ function getVisibleData(data, period){
             return data;
     }
 
+}
+function getVisibleBarChartData(data, period){
+    switch(period) {
+        case 'all':
+            return data;
+        case '7days':
+            return  _.takeRight(data, 7)
+        case '30days':
+            return _.takeRight(data, 30)
+        default:
+            return data;
+    }
+
+}
+
+function getBarChartData(countryDailyReport){
+    var dataProps = Object.getOwnPropertyNames(countryDailyReport.confirmed).slice(3);
+    console.log('getBarChartData')
+    console.log(countryDailyReport)
+
+    let barChartData = []
+    
+    for(var i = 1; i < dataProps.length; i++){
+        barChartData.push({
+            date: moment(dataProps[i], 'MM-DD-YY').format('MM-DD'),
+            deaths: countryDailyReport.deaths[dataProps[i]] - countryDailyReport.deaths[dataProps[i - 1]],
+            confirmed: countryDailyReport.confirmed[dataProps[i]] - countryDailyReport.confirmed[dataProps[i-1]]
+        })
+    }
+    console.log('getBarChartData')
+    console.log(barChartData)
+    return barChartData;
 }
 
 function getGraphData(countryDailyReport) {
