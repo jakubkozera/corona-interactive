@@ -77,10 +77,6 @@ function getGraphData(countryDailyReport) {
             id: "Deaths",
             data: dataObjectToArray(countryDailyReport.deaths)
         },
-        {
-            id: "Recovered",
-            data: dataObjectToArray(countryDailyReport.recovered)
-        },
     ];
 
     return data;

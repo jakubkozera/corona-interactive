@@ -26,13 +26,9 @@ function CountryGrid({ country }) {
     const columnDefs = [
         { headerName: "Date", field: "date", sort: 'desc', filter: true },
         { headerName: "Confirmed", field: "confirmed" },
-        { headerName: "Active", field: "active" },
-        { headerName: "Recovered", field: "recovered" },
         { headerName: "Deaths", field: "deaths" },
         { headerName: "+ Confirmed", field: "newConfirmed" },
-        { headerName: "+ Recovered", field: "newRecovered" },
         { headerName: "+ Deaths", field: "newDeaths" },        
-        { headerName: "Recovery ratio", field: "recoveryRatio", sortable: false, },
         { headerName: "Death ratio", field: "deathRatio", sortable: false },
     ]
 
