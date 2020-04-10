@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Map, Popup, TileLayer, CircleMarker, } from 'react-leaflet'
+import { Map, TileLayer, CircleMarker, } from 'react-leaflet'
 import './MainMap.css'
 import { selectCountryCases } from '../../../app/redux/reducers/Total'
 import 'leaflet/dist/leaflet.css';
 import MapPopup from './map-popup/MapPopup'
 export default function MainMap() {
-    const position = [51.505, 25.09]
+    const position = [35.505, 20.09]
 
     const [zoomLevel, setZoomLevel] = useState(4);
     const onZoomEnd = (e) => {
@@ -15,7 +15,7 @@ export default function MainMap() {
     const countryData = useSelector(selectCountryCases)
     const markers = getMarkers(countryData, zoomLevel)
     return (
-        <div className="map-container">
+        <div className="map-container pile block">
             <Map
                 style={{ width: '100%', height: '94.6vh' }}
                 center={position}

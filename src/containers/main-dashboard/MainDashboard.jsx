@@ -14,18 +14,22 @@ export default function MainDashboard() {
                 <TotalConfirmed />
                 <ConfirmedCases />
             </div>
-            <div className="main-panel pile block">
-                <MainMap />
-            </div>
-            <div className="right-panel pile">
-                <div className="totals">
-                    <TotalDeaths />
-                    <TotalRecovered />
+            <div className="main-panel">
+                <div className="main-first-row">
+                    <MainMap />
+                    <div className="totals pile">
+                        <TotalDeaths />
+                        <TotalRecovered />
+                    </div>
                 </div>
+
+
+
                 <div className="main-chart block">
                     <MainChart />
                 </div>
             </div>
+
         </div>
     )
 }

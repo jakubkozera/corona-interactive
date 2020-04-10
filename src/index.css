@@ -45,17 +45,22 @@ code {
   width: 16.6%;
 }
 .main-panel{
-  width: 50%;
+  width: 80%;
 }
-.right-panel {
+/* .right-panel {
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.right-panel .totals {
+} */
+.main-first-row {
   display: flex;
   flex-direction: row;
+}
+.main-first-row .totals {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
 }
 
 .main-chart {

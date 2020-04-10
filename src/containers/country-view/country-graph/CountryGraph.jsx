@@ -107,8 +107,6 @@ function getVisibleBarChartData(data, period){
 
 function getBarChartData(countryDailyReport){
     var dataProps = Object.getOwnPropertyNames(countryDailyReport.confirmed).slice(3);
-    console.log('getBarChartData')
-    console.log(countryDailyReport)
 
     let barChartData = []
     
@@ -119,21 +117,20 @@ function getBarChartData(countryDailyReport){
             confirmed: countryDailyReport.confirmed[dataProps[i]] - countryDailyReport.confirmed[dataProps[i-1]]
         })
     }
-    console.log('getBarChartData')
-    console.log(barChartData)
     return barChartData;
 }
 
 function getGraphData(countryDailyReport) {
     let data = [
         {
-            id: "Confirmed",
-            data: dataObjectToArray(countryDailyReport.confirmed)
-        },
-        {
             id: "Deaths",
             data: dataObjectToArray(countryDailyReport.deaths)
         },
+        {
+            id: "Confirmed",
+            data: dataObjectToArray(countryDailyReport.confirmed)
+        },
+
     ];
 
     return data;
@@ -164,7 +161,7 @@ const MyResponsiveLine = ({ data, period }) => (
         axisRight={null}
         sliceTooltip={renderToolTip}
         enableSlices="x"
-        colors={{ scheme: 'category10' }}
+        colors={{ scheme: 'pastel1' }}
         axisBottom={{
             format: '%b %d',
             tickValues: period === 'all' ? 'every 1 months' :'every 10 days',

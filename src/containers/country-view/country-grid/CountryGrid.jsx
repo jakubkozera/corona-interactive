@@ -8,6 +8,7 @@ import { Loader } from 'semantic-ui-react'
 export default function CountryGridContainer({ country }) {
     const dataLoaded = useSelector(selectAllDataLoaded);
 
+
     return (
         <div className="country-grid block pile">
             {(dataLoaded ? (<CountryGrid country={country} />) : (<Loader style={{ marginTop: '40px' }} active inline='centered' />))}
