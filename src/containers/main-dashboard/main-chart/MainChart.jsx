@@ -4,23 +4,109 @@ import moment from 'moment'
 import { useSelector } from 'react-redux'
 import { selectChinaConfirmed, selectOtherLocationConfirmed, selectDeathsConfirmed, selectRecoveredConfirmed, selectAllDataLoaded } from '../../../app/redux/reducers/Daily'
 import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveBar } from '@nivo/bar'
+import { Tab } from 'semantic-ui-react'
+import './MainChart.css'
 
 
 export default function MainChartContainer() {
+  const panes = [
+    { menuItem: 'Cases', render: () => <Tab.Pane attached={false}><MainChart/></Tab.Pane> },
+    { menuItem: 'Daily new cases', render: () => <Tab.Pane attached={false}><BarChartWrapper keyType="confirmed" /></Tab.Pane> },
+    { menuItem: 'Daily confirmed deaths', render: () => <Tab.Pane attached={false}><BarChartWrapper keyType="deaths" /></Tab.Pane> },
+  ]
+  
   const chartReady = useSelector(selectAllDataLoaded) 
-  return (chartReady && <MainChart/>)
+
+  return (chartReady && <Tab menu={{ borderless: true, secondary: true, pointing: true }} panes={panes} />)
 
 }
 
+function BarChartWrapper({keyType}){
+  const chinaConfrimedDailyCases = useSelector(selectChinaConfirmed)
+  const otherLocationConfrimedDailyCases = useSelector(selectOtherLocationConfirmed)
+  const deathsConfrimedDailyCases = useSelector(selectDeathsConfirmed)
+
+  const data = keyType === 'confirmed' ? getDailyConfirmed(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases) : getDailyDeaths(deathsConfrimedDailyCases) 
+
+  console.log('barchartwarpper data:')
+  console.log(data)
+  return (<div className="bar-chart-container"><MyResponsiveBar data={data} keyType={keyType} /></div>)
+
+}
+function  getDailyDeaths(deathsConfrimedDailyCases){
+  var dataProps = Object.getOwnPropertyNames(deathsConfrimedDailyCases);
+  let barChartData = []
+  
+  for(var i = 1; i < dataProps.length; i++){
+      barChartData.push({
+          date: moment(dataProps[i], 'MM-DD-YY').format('MM-DD'),
+          deaths: deathsConfrimedDailyCases[dataProps[i]] - deathsConfrimedDailyCases[dataProps[i-1]]
+      })
+  }
+  return barChartData;
+
+}
+function getDailyConfirmed(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases){
+  var dataProps = Object.getOwnPropertyNames(chinaConfrimedDailyCases);
+
+  let barChartData = []
+  
+  for(var i = 1; i < dataProps.length; i++){
+
+    const totalCurrentDate = chinaConfrimedDailyCases[dataProps[i]] + otherLocationConfrimedDailyCases[dataProps[i]]
+    const totalPreviousDay = chinaConfrimedDailyCases[dataProps[i-1]] + otherLocationConfrimedDailyCases[dataProps[i-1]]
+      barChartData.push({
+          date: moment(dataProps[i], 'MM-DD-YY').format('MM-DD'),
+          confirmed: totalCurrentDate - totalPreviousDay
+      })
+  }
+  return barChartData;
+}
+
+const MyResponsiveBar = ({ data, keyType }) => (
+  <ResponsiveBar
+      data={data}
+      keys={[ keyType ]}
+      indexBy="date"
+      margin={{ top: 50, right: 20, bottom: 30, left: 50 }}
+      padding={0.3}
+      groupMode="grouped"
+      colors={{ scheme: 'pastel1' }}
+
+      borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+      axisTop={null}
+      axisRight={null}
+      axisBottom={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: -40,
+          legendPosition: 'middle',
+          legendOffset: 32
+      }}
+      axisLeft={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legendPosition: 'middle',
+          legendOffset: -40
+      }}
+      enableLabel={false}
+      animate={true}
+      motionStiffness={90}
+      motionDamping={15}
+  />
+)
 function MainChart() {
 
     const chinaConfrimedDailyCases = useSelector(selectChinaConfirmed)
     const otherLocationConfrimedDailyCases = useSelector(selectOtherLocationConfirmed)
     const deathsConfrimedDailyCases = useSelector(selectDeathsConfirmed)
     const recoveredConfrimedDailyCases = useSelector(selectRecoveredConfirmed)
-
+    console.log('mainchart')
     let data = getDataForChart(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
-    return ( <MyResponsiveLine data={data} /> )
+    console.log(data)
+    return ( <div class="chart-container"> <MyResponsiveLine data={data} /> </div>)
 }
 
 const MyResponsiveLine = ({ data }) => (
