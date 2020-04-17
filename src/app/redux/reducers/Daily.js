@@ -6,13 +6,13 @@ import moment from 'moment'
 export const slice = createSlice({
     name: 'daily',
     initialState: {
-        chinaConfirmed: {},
+        usConfirmed: {},
         otherLocationConfirmed: {},
         allDataLoaded: false
     },
     reducers: {
-        chinaConfirmed: (state, action) => {
-            state.chinaConfirmed = action.payload;
+        usConfirmed: (state, action) => {
+            state.usConfirmed = action.payload;
         },
         otherLocationConfirmed: (state, action) => {
             state.otherLocationConfirmed = action.payload;
@@ -31,22 +31,22 @@ export const slice = createSlice({
 
 export const {
     dataLoaded,
-    chinaConfirmed,
+    usConfirmed,
     otherLocationConfirmed,
     recoveredConfirmed,
     deathsConfirmed
 } = slice.actions;
 
-export const selectChinaConfirmed = state => state.daily.chinaConfirmed.result;
+export const selectUsConfirmed = state => state.daily.usConfirmed.result;
 export const selectRecoveredConfirmed = state => state.daily.recoveredConfirmed.result;
 export const selectDeathsConfirmed = state => state.daily.deathsConfirmed.result;
 export const selectOtherLocationConfirmed = state => state.daily.otherLocationConfirmed.result;
 export const selectAllDataLoaded = state => state.daily.allDataLoaded;
 
 export const selectCountryDailyReport = country => state => {
-    if(country === 'china') {
+    if(country === 'us') {
         return {
-            confirmed: state.daily.chinaConfirmed.countriesComputed[0],
+            confirmed: state.daily.usConfirmed.countriesComputed[0],
             deaths: state.daily.deathsConfirmed.countriesComputed.filter(cc => cc.countryRoute === country)[0],
             recovered: state.daily.recoveredConfirmed.countriesComputed.filter(cc => cc.countryRoute === country)[0],
         }

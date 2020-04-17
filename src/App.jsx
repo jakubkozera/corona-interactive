@@ -6,7 +6,7 @@ import computeDailyReport from './utils/dailyReport'
 import { computeTimeSeriesReport, computeDeathsTimeSeriesReport, computeRecoveredTimeSeriesReport } from './utils/timeSeriesReport'
 import { csv } from 'd3'
 import { confirmed, deaths, recovered, countryCases } from './app/redux/reducers/Total'
-import { chinaConfirmed, otherLocationConfirmed, dataLoaded, deathsConfirmed, recoveredConfirmed } from './app/redux/reducers/Daily'
+import { usConfirmed, otherLocationConfirmed, dataLoaded, deathsConfirmed, recoveredConfirmed } from './app/redux/reducers/Daily'
 import { Router, Route } from 'react-router-dom'
 import CountryDashboard from './containers/country-view/CountryDashboard';
 
@@ -60,11 +60,11 @@ function App({ history }) {
     csv(rootFolderLocation + 'data/time_series_covid19_confirmed_global.csv')
       .then(deathsSeries => {
         const {
-          chinaResult,
+          usResult,
           otherLocationResult
         } = computeTimeSeriesReport(deathsSeries);
 
-        dispatch(chinaConfirmed(chinaResult))
+        dispatch(usConfirmed(usResult))
         dispatch(otherLocationConfirmed(otherLocationResult))
         dispatch(dataLoaded(true))
         setConfirmedReportLoaded(true)

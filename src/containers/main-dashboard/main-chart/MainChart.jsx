@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import moment from 'moment'
 import { useSelector } from 'react-redux'
-import { selectChinaConfirmed, selectOtherLocationConfirmed, selectDeathsConfirmed, selectRecoveredConfirmed, selectAllDataLoaded } from '../../../app/redux/reducers/Daily'
+import { selectUsConfirmed, selectOtherLocationConfirmed, selectDeathsConfirmed, selectRecoveredConfirmed, selectAllDataLoaded } from '../../../app/redux/reducers/Daily'
 import { ResponsiveLine } from '@nivo/line'
 import { ResponsiveBar } from '@nivo/bar'
 import { Tab } from 'semantic-ui-react'
@@ -23,7 +23,7 @@ export default function MainChartContainer() {
 }
 
 function BarChartWrapper({keyType}){
-  const chinaConfrimedDailyCases = useSelector(selectChinaConfirmed)
+  const chinaConfrimedDailyCases = useSelector(selectUsConfirmed)
   const otherLocationConfrimedDailyCases = useSelector(selectOtherLocationConfirmed)
   const deathsConfrimedDailyCases = useSelector(selectDeathsConfirmed)
 
@@ -99,12 +99,12 @@ const MyResponsiveBar = ({ data, keyType }) => (
 )
 function MainChart() {
 
-    const chinaConfrimedDailyCases = useSelector(selectChinaConfirmed)
+    const usConfrimedDailyCases = useSelector(selectUsConfirmed)
     const otherLocationConfrimedDailyCases = useSelector(selectOtherLocationConfirmed)
     const deathsConfrimedDailyCases = useSelector(selectDeathsConfirmed)
     const recoveredConfrimedDailyCases = useSelector(selectRecoveredConfirmed)
     console.log('mainchart')
-    let data = getDataForChart(chinaConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
+    let data = getDataForChart(usConfrimedDailyCases, otherLocationConfrimedDailyCases, deathsConfrimedDailyCases, recoveredConfrimedDailyCases)
     console.log(data)
     return ( <div class="chart-container"> <MyResponsiveLine data={data} /> </div>)
 }
@@ -168,10 +168,10 @@ const MyResponsiveLine = ({ data }) => (
     />
 )
 
-function getDataForChart(china, other, deaths, recovered) {
+function getDataForChart(us, other, deaths, recovered) {
   let data = [{
-    id: "China [Confirmed]",
-    data: dataObjectToArray(china)
+    id: "United States [Confirmed]",
+    data: dataObjectToArray(us)
   },
 {
   id: "Others [Confirmed]",

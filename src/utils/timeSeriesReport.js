@@ -7,16 +7,16 @@ import stringToRoute from './stringToRoute'
 
 export function computeTimeSeriesReport(data) {
 
-    const chinaData = data.filter(d => d[countryProp] === "China");
-    const otherLocationData = data.filter(d => d[countryProp] !== "China");
+    const usData = data.filter(d => d[countryProp] === "US");
+    const otherLocationData = data.filter(d => d[countryProp] !== "US");
 
-    const dateProps = Object.getOwnPropertyNames(chinaData[0]).slice(4);
+    const dateProps = Object.getOwnPropertyNames(usData[0]).slice(4);
 
-    let chinaResult = getComputedResult(chinaData, dateProps);
+    let usResult = getComputedResult(usData, dateProps);
     let otherLocationResult = getComputedResult(otherLocationData, dateProps);
 
     return {
-        chinaResult,
+        usResult,
         otherLocationResult
     }
 }
